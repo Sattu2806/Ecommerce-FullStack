@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id Int @id @default(autoincrement())  
+  name String? @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+  Product Product[]
+  Cart Cart[]
+  Review Review[]
+    Purchased Purchased[]
+}
+model Product{
+  id Int @id @default(autoincrement())  
+  title String @db.VarChar(255)
+  description String @db.Text
+  category String
+  style String
+  store String
+  size String
+  inventory Int
+  color String
+  price Int
+  images String @db.Text
+  userId Int
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Cart Cart[]
+  Review Review[]
+  Purchased Purchased[]
+  @@index([userId])
+}
+
+model Cart {
+  id        Int     @id @default(autoincrement())
+  productId  Int
+  Product Product @relation(fields: [productId],references: [id],onDelete: Cascade)
+  userId Int
+  User User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  @@index([productId])
+  @@index([userId])
+}
+
+model Purchased {
+    id        Int     @id @default(autoincrement())
+    isPaid    Boolean
+    productId Int
+    Product Product @relation(fields: [productId],references: [id],onDelete: Cascade)
+    userId Int
+    User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    @@index([productId])
+    @@index([userId])
+}
+
+model Review {
+  id        Int     @id @default(autoincrement())
+  rating Int
+  commentry String
+  productId Int
+  Product Product @relation(fields: [productId],references: [id],onDelete: Cascade)
+  userId Int
+  User User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  @@index([productId])
+  @@index([userId])
+}

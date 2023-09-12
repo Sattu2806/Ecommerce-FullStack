@@ -1,0 +1,41 @@
+{
+  "name": "ecommerce-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.1.0",
+    "@tiptap/pm": "^2.0.4",
+    "@tiptap/react": "^2.0.4",
+    "@tiptap/starter-kit": "^2.0.4",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "next": "13.4.12",
+    "next-auth": "^4.22.3",
+    "next-cloudinary": "^4.17.1",
+    "postcss": "8.4.27",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "react-pick-color": "^1.0.4",
+    "react-rating-star-with-type": "^1.2.1",
+    "stripe": "^13.4.0",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "prisma": "^5.1.0"
+  }
+}
