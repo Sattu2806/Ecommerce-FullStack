@@ -40,7 +40,7 @@ const Signinform = (props: Props) => {
              />
             <label htmlFor="" className='mb-2'>Password</label>
             <input 
-            type="text"
+            type="password"
             className='p-2 border-gray-300 border-[1px] rounded-lg w-[300px] mb-4 focus:outline-none focus:border-gray-600 text-black'
             id='password'
             value={user.password}
