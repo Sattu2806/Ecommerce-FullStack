@@ -36,7 +36,7 @@ This project is a dynamic Ecommerce platform designed to facilitate seamless tra
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/Sattu2806/Ecommerce-FullStack.git
-   cd Ecommerce-FullStack
+   
 2. **Install dependencies**:
    ```bash
    npm install
