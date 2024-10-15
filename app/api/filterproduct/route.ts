@@ -25,7 +25,7 @@ export async function GET(request: Request) {
       },
     });
 
-    return NextResponse.json({ message: "API route is working" });
+    return NextResponse.json(products);
   } catch (error) {
     console.error("Error selecting product", error);
     return NextResponse.error();
