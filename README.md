@@ -28,9 +28,10 @@ This project is a dynamic Ecommerce platform designed to facilitate seamless tra
 - **Next.js**: React framework for building server-side rendered applications.
 - **NextAuth**: Authentication for Next.js applications.
 - **Stripe**: Payment processing platform for secure transactions.
-- **SQL**: Database management.
+- **PostgreSQL**: Database 
 - **PlanetScale**: Scalable SQL database service.
 - **Cloudinary**: Media management and optimization.
+- **Prisma**: ORM
 
 ## Setup
 1. **Clone the repository**:
