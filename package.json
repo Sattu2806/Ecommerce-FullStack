@@ -22,6 +22,7 @@
     "bcrypt": "^5.1.0",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "lodash.debounce": "^4.0.8",
     "next": "13.4.12",
     "next-auth": "^4.22.3",
     "next-cloudinary": "^4.17.1",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/react-color": "^3.0.6",
     "prisma": "^5.1.0"
   }

@@ -1,28 +1,44 @@
 import prisma from "@/app/prismadb";
 import { NextResponse } from "next/server";
-export const dynamic = 'auto'
+
+export const dynamic = 'auto';
 // 'auto' | 'force-dynamic' | 'error' | 'force-static'
 
 export async function GET(request: Request) {
   try {
-    const searchParams = new URLSearchParams(request.credentials);
+    const url = new URL(request.url);
+    const searchParams = url.searchParams;
 
-    const categories = searchParams.getAll("categories[]");
-    const colors = searchParams.getAll("colors[]");
-    const sizes = searchParams.getAll("size[]");
+    // Extract parameters without '[]'
+    const categories = searchParams.getAll("categories");
+    const colors = searchParams.getAll("colors");
+    const sizes = searchParams.getAll("size");
 
     const minPrice = parseInt(searchParams.get("price[min]") || "0");
     const maxPrice = parseInt(searchParams.get("price[max]") || "100000");
 
+    console.log(categories, colors, sizes, minPrice, maxPrice);
+    // e.g., ['Casual', 'Formal'] ['#FFFFFF', '#000000'] ['M', 'L'] 10 100
+
+    // Build dynamic 'where' conditions
+    const whereConditions: any = {
+      price: { gte: minPrice, lte: maxPrice },
+    };
+
+    if (categories.length > 0) {
+      whereConditions.style = { in: categories };
+    }
+
+    if (sizes.length > 0) {
+      whereConditions.size = { in: sizes };
+    }
+
+    if (colors.length > 0) {
+      whereConditions.color = { in: colors };
+    }
+
     const products = await prisma.product.findMany({
-      where: {
-        OR: [
-          ...categories.map((category) => ({ style: { contains: category } })),
-          ...sizes.map((size) => ({ size: { contains: size } })),
-          ...colors.map((color) => ({ color: { contains: color } })),
-          { price: { gte: minPrice, lte: maxPrice } },
-        ],
-      },
+      where: whereConditions,
     });
 
     return NextResponse.json(products);
