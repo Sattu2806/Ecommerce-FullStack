@@ -27,7 +27,7 @@ const ImageUpload:React.FC<Props>  = ({info,updateInfo,imageUrls,setImageUrls,ha
   return (
     <div>
         <div className='mb-10'>
-            <CldUploadWidget uploadPreset='kfmp7mhq' onUpload={onupload}>
+            <CldUploadWidget uploadPreset='gribbble' onUpload={onupload}>
                 {({open}:any) => {
                     function handleOnclick(e: React.MouseEvent<HTMLButtonElement>){
                         e.preventDefault()
