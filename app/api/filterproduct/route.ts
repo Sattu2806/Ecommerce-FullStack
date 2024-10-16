@@ -1,8 +1,7 @@
 import prisma from "@/app/prismadb";
 import { NextResponse } from "next/server";
 
-export const dynamic = 'auto';
-// 'auto' | 'force-dynamic' | 'error' | 'force-static'
+export const dynamic = 'force-dynamic'; // Force dynamic behavior
 
 export async function GET(request: Request) {
   try {
@@ -16,9 +15,6 @@ export async function GET(request: Request) {
 
     const minPrice = parseInt(searchParams.get("price[min]") || "0");
     const maxPrice = parseInt(searchParams.get("price[max]") || "100000");
-
-    console.log(categories, colors, sizes, minPrice, maxPrice);
-    // e.g., ['Casual', 'Formal'] ['#FFFFFF', '#000000'] ['M', 'L'] 10 100
 
     // Build dynamic 'where' conditions
     const whereConditions: any = {
